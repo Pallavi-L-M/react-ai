@@ -1,0 +1,13 @@
+services:
+  react-ai:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      APP_SECRET: ${APP_SECRET:-local-demo-secret-change-me}
+      DEMO_PASSWORD: ${DEMO_PASSWORD:-reactai-demo}
+      DATABASE_URL: sqlite:////data/react_ai.db
+      FRONTEND_ORIGIN: http://localhost:8000
+    volumes:
+      - react-data:/data
+volumes:
+  react-data:
