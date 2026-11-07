@@ -177,7 +177,7 @@ def metrics(s:Session=Depends(db),u:User=Depends(current)):
     return {"cpu":cpu,"memory":memory,"health":max(0,100-scalar_active(s)*12),"mode":mode,"sampled_at":datetime.now(timezone.utc).isoformat()}
 
 # Docker build serves the compiled SPA from the same origin. In local development Vite serves it.
-STATIC_DIR=os.path.abspath(os.path.join(os.path.dirname(__file__),"..","..","static"))
+STATIC_DIR=os.path.abspath(os.path.join(os.path.dirname(__file__),"..","static"))
 if os.path.isdir(STATIC_DIR):
     from fastapi.staticfiles import StaticFiles
     @app.get("/", include_in_schema=False)
